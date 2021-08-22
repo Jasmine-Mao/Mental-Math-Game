@@ -1,3 +1,4 @@
+//End screen after the questions are answered
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
@@ -50,27 +51,31 @@ public class end extends JFrame {
 		contentPane.setLayout(null);
 		Image background = new ImageIcon(this.getClass().getResource("Background.png")).getImage();
 
+		//End text output to the user
 		JLabel greatJobLabel = new JLabel("Great Job!!");
-		greatJobLabel.setForeground(new Color(250, 128, 114));
-		greatJobLabel.setFont(new Font("Cooper Black", Font.PLAIN, 50));
-		greatJobLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		greatJobLabel.setBounds(280, 100, 340, 200);
-		contentPane.add(greatJobLabel);
+		greatJobLabel.setForeground(new Color(250, 128, 114)); //Sets text colour
+		greatJobLabel.setFont(new Font("Cooper Black", Font.PLAIN, 50)); //Sets font and style
+		greatJobLabel.setHorizontalAlignment(SwingConstants.CENTER); //Horizontally aligns in the centre
+		greatJobLabel.setBounds(280, 100, 340, 200); //Sets bounds within the frame
+		contentPane.add(greatJobLabel); //Adds the label to the content pane
 
+		//Tells the user the number of correct answers they got
 		JLabel correctAnswerLabel = new JLabel("");
 		correctAnswerLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		correctAnswerLabel.setForeground(new Color(250, 128, 114));
 		correctAnswerLabel.setFont(new Font("Cooper Black", Font.PLAIN, 40));
 		correctAnswerLabel.setBounds(220, 150, 460, 200);
 		contentPane.add(correctAnswerLabel);
-		correctAnswerLabel.setText("You got " + play.ansCounter + "/20 correct!");
-
+		correctAnswerLabel.setText("You got " + play.ansCounter + "/20 correct!"); //Takes data from the play frame, which recorded all the answers, and displays it to the user
+		
+		//Replay button
 		JButton replayButton = new JButton("Replay");
 		replayButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				play playScreen = new play();
 				playScreen.setVisible(true);
 				end.this.setVisible(false);
+			//If the user selects the replay button, the play screen opens again and the user can replay the level they selected/created
 			}
 		});
 		replayButton.setBackground(new Color(50, 205, 50));
@@ -78,16 +83,18 @@ public class end extends JFrame {
 		replayButton.setBounds(157, 380, 126, 60);
 		contentPane.add(replayButton);
 
+		//Menu button that takes the user back to the main menu
 		JButton menuButton = new JButton("Menu");
 		menuButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu menuScreen = new Menu();
 				menuScreen.frame.setVisible(true);
-				// frameEnd = new end();
 				end.this.setVisible(false);
+			//If the button is pressed, the current screen closes the menu screen opens again
 				customChoosing.addition = false;
 				customChoosing.subtraction = false;
 				customChoosing.upperNum = 0;
+			//Resets these values for the custom choosing level. The code wil no longer remember what the user selected in their custom level so the user can start again from scratch
 			}
 		});
 		menuButton.setFont(new Font("Cooper Black", Font.PLAIN, 20));
@@ -95,6 +102,7 @@ public class end extends JFrame {
 		menuButton.setBounds(618, 380, 126, 60);
 		contentPane.add(menuButton);
 
+		//Background image set into a label
 		JLabel endBackground = new JLabel("");
 		endBackground.setFont(new Font("Cooper Black", Font.PLAIN, 35));
 		endBackground.setBounds(0, 0, 900, 600);
