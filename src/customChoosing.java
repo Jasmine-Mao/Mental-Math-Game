@@ -126,5 +126,7 @@ public class customChoosing extends JFrame {
 		descriptionLabel.setIcon(new ImageIcon(background));
 
 		levelChoosing.level = 8;
+		//This tells the play frame, the frame where all the questions are generated at random, that the user chose a custom level.
+		//The Play frame then knows that it needs to take into account the users input (addition, subtraction, highest value) when making all the questions
 	}
 }
